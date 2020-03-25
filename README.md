@@ -76,7 +76,7 @@ await Geoip2CliDownloader
 ```ts
 import { Geoip2CliConverter } from 'geoip2-cli';
 
-const converter = Geoip2CliConvert.openSync('GeoLite2-City.mmdb');
+const converter = Geoip2CliConverter.openSync('GeoLite2-City.mmdb');
 const result = converter.getUnique();
 ```
 
