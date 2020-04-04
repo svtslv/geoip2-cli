@@ -1,6 +1,6 @@
 {
   "name": "geoip2-cli",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Code and command-line utils for download and convert geoip2 maxmind mmdb",
   "author": "Sviatoslav H",
   "license": "MIT",
@@ -19,7 +19,9 @@
     "json"
   ],
   "files": [
-    "dist"
+    "dist",
+    "index.js",
+    "index.d.ts"
   ],
   "bin": {
     "webdav-cli": "./dist/geoip2-cli.cli.js"
