@@ -44,15 +44,16 @@ export class Geoip2CliDownloader {
 
     console.log(url);
 
-    return await new Promise(resolve => {
+    return await new Promise((resolve, reject) => {
       https.get(url, response => {
         response
         .pipe(zlib.createGunzip().on('error', () => console.log('Link not found. Invalid licenseKey?')))
         .pipe(tar.t()).on('entry', (entry: any) => {
           if (entry.path.endsWith('.mmdb')) {
             const dstFilename = path.join(downloadPath, path.basename(entry.path));
-            entry.pipe(fs.createWriteStream(dstFilename));
-            resolve(dstFilename);
+            entry.pipe(fs.createWriteStream(dstFilename))
+              .on('finish', () => resolve(dstFilename))
+              .on('error', reject);
           }
         });
       });
