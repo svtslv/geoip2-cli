@@ -42,8 +42,6 @@ export class Geoip2CliDownloader {
     const link = 'https://download.maxmind.com/app/geoip_download';
     const url = `${link}?license_key=${licenseKey}&edition_id=${EDITIONS[edition]}&date=${date}&suffix=tar.gz`;
 
-    console.log(url);
-
     return await new Promise(resolve => {
       https.get(url, response => {
         response
